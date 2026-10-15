@@ -1,0 +1,27 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null,
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/analytics-country.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "private, no-store" },
+        { "key": "Vary", "value": "X-Vercel-IP-Country" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Robots-Tag", "value": "noindex" },
+        { "key": "Access-Control-Allow-Origin", "value": "https://shiromatz.com" },
+        { "key": "Access-Control-Expose-Headers", "value": "X-Analytics-Country" }
+      ]
+    },
+    {
+      "source": "/analytics-country.json",
+      "has": [
+        { "type": "header", "key": "x-vercel-ip-country", "value": "^(?<country>[A-Z]{2})$" }
+      ],
+      "headers": [{ "key": "X-Analytics-Country", "value": ":country" }]
+    }
+  ]
+}
